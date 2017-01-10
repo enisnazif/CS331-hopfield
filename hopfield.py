@@ -110,72 +110,70 @@ def experiment_2():
 
 ### Q3
 def experiment_3_async():
-    for ic in [0.5, 1]:
-        print 'Inhibition Constant = ' + str(ic)
-        weight_matrix = initialise_weights(ic)
-        print "Asynchronous update:"
-        for s in init:
-            print str(s) + ': ' + str(hopfield(weight_matrix, np.matrix(s), async_update, 1000))
+    print 'Inhibition Constant = ' + str(sys.argv[1])
+    print "Asynchronous update:"
+    for s in init:
+        print str(s) + ': ' + str(hopfield(weight_matrix, np.matrix(s), async_update, 1000))
 
-        fig = plt.figure(figsize=(9, 9))
-        ax = fig.add_subplot(111)
-        for s in init:
-            test_state = s
-            energy_seq = []
-            iterations = 100
-            for i in range(iterations):
-                test_state = async_update(weight_matrix, test_state, 1)
-                energy_seq.append(energy(test_state))
+    fig = plt.figure(figsize=(9, 9))
+    ax = fig.add_subplot(111)
+    for s in init:
+        test_state = s
+        energy_seq = []
+        iterations = 100
+        for i in range(iterations):
+            test_state = async_update(weight_matrix, test_state, 1)
+            energy_seq.append(energy(test_state))
 
-            x = range(iterations)
-            ax.plot(x, energy_seq)
-            ax.legend(['State {0}'.format(i) for i in range(len(init))])
+        x = range(iterations)
+        ax.plot(x, energy_seq)
+        ax.legend(['State {0}'.format(i) for i in range(len(init))])
 
-        ax.set_xlabel('Iteration')
-        ax.set_ylabel('Network Energy')
-        ax.set_title('Network Energy against Iteration number for states in "init" (w = '+str(ic)+', async updating)')
+    ax.set_xlabel('Iteration')
+    ax.set_ylabel('Network Energy')
+    ax.set_title('Network Energy against Iteration number for states in "init" (w = '+str(sys.argv[1])+', async updating)')
 
-        plt.show()
+    plt.show()
 
 def experiment_3_scan():
-    for ic in [0.5, 1]:
-        print 'Inhibition Constant = ' + str(ic)
-        weight_matrix = initialise_weights(ic)
-        print "Scan update:"
-        for s in init:
-            print str(s) + ': ' + str(hopfield(weight_matrix, s, scan_update, 10))
+    print 'Inhibition Constant = ' + str(sys.argv[1])
+    print "Scan update:"
+    for s in init:
+        print str(s) + ': ' + str(hopfield(weight_matrix, s, scan_update, 10))
 
-        fig = plt.figure(figsize=(9, 9))
-        ax = fig.add_subplot(111)
-        for s in init:
-            test_state = s
-            energy_seq = []
-            iterations = 10
-            for i in range(iterations):
-                test_state = scan_update(weight_matrix, test_state, 1)
-                energy_seq.append(energy(test_state))
+    fig = plt.figure(figsize=(9, 9))
+    ax = fig.add_subplot(111)
+    for s in init:
+        test_state = s
+        energy_seq = []
+        iterations = 10
+        for i in range(iterations):
+            test_state = scan_update(weight_matrix, test_state, 1)
+            energy_seq.append(energy(test_state))
 
-            x = range(iterations)
-            ax.plot(x, energy_seq)
-            ax.legend(['State {0}'.format(i) for i in range(len(init))])
+        x = range(iterations)
+        ax.plot(x, energy_seq)
+        ax.legend(['State {0}'.format(i) for i in range(len(init))])
 
-        ax.set_xlabel('Iteration')
-        ax.set_ylabel('Network Energy')
-        ax.set_title('Network Energy against Iteration number for states in "init" (w = '+str(ic)+', scan updating)')
+    ax.set_xlabel('Iteration')
+    ax.set_ylabel('Network Energy')
+    ax.set_title('Network Energy against Iteration number for states in "init" (w = '+str(sys.argv[1])+', scan updating)')
 
-        plt.show()
+    plt.show()
 
 ################################################################################
 
 print 'Weight matrix is:'
-weight_matrix = initialise_weights(1)
+weight_matrix = initialise_weights(float(sys.argv[1]))
 print weight_matrix
 print ''
 
-experiment_1()
-print '-------------------------------------------'
-experiment_2()
-print '-------------------------------------------'
-experiment_3_scan()
-print '-------------------------------------------'
-experiment_3_async()
+if int(sys.argv[2]) == 1:
+    experiment_1()
+
+elif int(sys.argv[2]) == 2:
+    experiment_2()
+
+elif int(sys.argv[2]) == 3:
+    experiment_3_async()
+    experiment_3_scan()
