@@ -6,3 +6,5 @@ In order to run the Hopfield network
 
 ## Run all experiements
 `python hopfield.py`
+
+In order to only run a single experiment, comment out the other experiment functions at the bottom of `hopfield.py`
