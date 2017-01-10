@@ -1,5 +1,5 @@
 # CS331-hopfield
-In order to run the Hopfield network
+Implementation of a Hopfield Network for the CS331 Coursework
 
 ## Install Dependencies
 `pip install --user -r requirements.txt`
