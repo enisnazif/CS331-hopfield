@@ -4,9 +4,13 @@ Implementation of a Hopfield Network for the CS331 Coursework
 ## Install Dependencies
 `pip install --user -r requirements.txt`
 
-## Run all experiements
-`python hopfield.py`
+## Running experiements
+`python hopfield.py [inhibition constant] [experiment number]`
 
-In order to only run a single experiment, comment out the other experiment functions at the bottom of `hopfield.py`
+Experiment number can be one of 1,2 or 3
+The inhibition constant can be one of 0.5 or 1
 
-Alteratively, the code is available in an ipython notebook which allows for easy running and visualisation of the output of the experiments
+For example, to run experiment 2 with on a network with inhibition constant 0.5:
+`python hopfield.py 0.5 2`
+
+Alternatively, open the file ipython notebook `hopfield.ipynb` here on GitHub which shows the outputs of all of the experiements together
