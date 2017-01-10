@@ -9,4 +9,4 @@ Implementation of a Hopfield Network for the CS331 Coursework
 
 In order to only run a single experiment, comment out the other experiment functions at the bottom of `hopfield.py`
 
-Alteratively, open the file ipython notebook `hopfield.ipynb` here on GitHub which shows the outputs of all of the experiements individually
+Alternatively, open the file ipython notebook `hopfield.ipynb` here on GitHub which shows the outputs of all of the experiements individually
